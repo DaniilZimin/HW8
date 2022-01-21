@@ -7,18 +7,19 @@ import java.util.Arrays;
 public class Main {
 
     public static void main(String[] args) {
-        leapYear(2022);
+        leapYear(2000);
         versionOs(0, 2022);
         estimatedDeliveryTime(48);
         String abc = "aabccddefgghiijjkk";
         searchForADuplicate(abc);
+        searchForADuplicate2(abc);
         int[] number = {3, 2, 1, 6, 5, 4, 3, 4, 10};
         flippingAnArray(number);
     }
 
     // Задание 1
     public static void leapYear(int year) {
-        boolean leapYear = year % 4 == 0 && year % 100 != 0;
+        boolean leapYear = year % 4 == 0 && year % 100 != 0 || year % 400 == 0;
         if (leapYear) {
             System.out.println(year + " год является високосным!");
         } else {
@@ -63,7 +64,7 @@ public class Main {
                 if (j != i) {
                     if (symbols[j] == symbols[i] && symbols[i] != a) {
                         a = symbols[i];
-                        System.out.println("Найден дубль символов: " + symbols[i] + symbols[j]);
+                        System.out.println("Найден дубль символа: " + symbols[i]);
                         return;
                     }
                 }
@@ -71,6 +72,19 @@ public class Main {
         }
         System.out.println("Дублей не найдено!");
     }
+
+    //Задание 4 второй вариант
+    public static void searchForADuplicate2(String abc){
+        char[] symbols = abc.toCharArray();
+        for (int i = 0; i < symbols.length - 1; i++) {
+            if (symbols[i] == symbols[i + 1]){
+                System.out.println("Найден дубль символа: " + symbols[i]);
+                return;
+            }
+        }
+        System.out.println("Дублей не найдено!");
+    }
+
 
     // Задание 5
     public static void flippingAnArray(int[] numbers) {
